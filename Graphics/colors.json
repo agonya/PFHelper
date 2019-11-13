@@ -1,6 +1,5 @@
 {
-     "comment": "author Yusuke Kawasaki",
-
+    "comment": "author: Yusuke Kawasaki",
 
     "colorsWithSubs": {
         "red": {
@@ -295,7 +294,6 @@
             "800": "#37474f",
             "900": "#263238"
         }
-
     },
 
     "colorPalette": {
@@ -447,7 +445,5 @@
         "whitesmoke": "#f5f5f5",
         "yellow": "#ffff00",
         "yellowgreen": "#9acd32"
-      }
-
-         
-     }
+    }
+}

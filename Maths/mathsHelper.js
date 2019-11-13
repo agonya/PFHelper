@@ -19,7 +19,6 @@ class MathsHelper {
      * @author Tayfun Turgut <tyfn.trgt@gmail.com>
      */
     static constrain(input = 0, min = 0, max = 1) {
-        // validate parameters
         if ((typeof input) != "number" || (typeof min) != "number" || (typeof max) != "number") {
             console.warn(`MathsHelper.Constrain : All parameters must be of type "number"!
             Log => input: ${input}, min: ${min}, max: ${max}`);

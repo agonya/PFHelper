@@ -1,4 +1,5 @@
 import colorsJSON from "./colors.json";
+
 /**
  *
  *
@@ -132,7 +133,6 @@ class ColorsHelper {
      * @author Tunahan Gormus <tunahangormus@gmail.com>
      * @author Euler Junior <https://stackoverflow.com/users/5274306/euler-junior>
      * @returns {array}
-     * 
      */
     static gradientColor(startColor = "", endColor = "", colorCount = 10, hex = true) {
 
@@ -168,7 +168,6 @@ class ColorsHelper {
      * 
      * @author Tunahan Gormus <tunahangormus@gmail.com>
      * @returns {array}
-     * 
      */
     static convertToHex(rgb, hex = "true") {
         let calculateHex = function (c) {

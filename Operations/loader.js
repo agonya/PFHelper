@@ -1,35 +1,35 @@
 class Loader {
 	constructor(textureManager) {
 		this.textureManager = textureManager;
-		
+
 		this.numAssets = 0;
 		this.numLoaded = 0;
 		this.completeFunc = null;
 	}
-	
+
 	assetLoaded() {
 		this.numLoaded++;
 		if (this.completeFunc != null && this.numLoaded == this.numAssets) {
 			this.completeFunc();
 		}
 	}
-	
+
 	onComplete(func) {
 		this.completeFunc = func;
 		if (this.numLoaded == this.numAssets) {
 			this.completeFunc();
 		}
 	}
-	
+
 	loadImage(key, b64) {
 		this.numAssets++;
 		this.textureManager.addBase64(key, b64);
 		this.assetLoaded();
 	}
-	
+
 	loadAtlas(key, b64, json) {
 		this.numAssets++;
-		
+
 		let image = new Image();
 		image.src = b64;
 		image.onload = () => {
@@ -37,10 +37,10 @@ class Loader {
 			this.assetLoaded();
 		};
 	}
-	
+
 	loadSpriteSheet(key, b64, frameWidth, frameHeight) {
 		this.numAssets++;
-		
+
 		let image = new Image();
 		image.src = b64;
 		image.onload = () => {
@@ -51,17 +51,16 @@ class Loader {
 			this.assetLoaded();
 		};
 	}
-	
-	// process the font to make it phaser-compatible (courtesy of ömer)
+
 	static loadFont(xmlCache, key, json) {
-		let getAttribute = function(id) {
+		let getAttribute = function (id) {
 			for (let prop in this) {
 				if (prop == id) {
 					return this[prop];
 				}
 			}
 		};
-		
+
 		json.getElementsByTagName = (id) => {
 			let elements = [];
 			for (let prop in json) {
@@ -88,7 +87,7 @@ class Loader {
 			}
 			return elements;
 		};
-		
+
 		xmlCache.add(key, json);
 	}
 }
