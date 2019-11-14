@@ -1,5 +1,11 @@
 class UtilityHelper {
 
+    constructor() {
+        if (TweenTrain) {
+            this.tweenTrain = TweenTrain;
+        }
+    }
+
     static createBurstFlowAnimation(from, to, amount = 10, key = "coin", duration = 1) {
         if (from.goldAnimationPlaying) return;
         from.goldAnimationPlaying = true;
@@ -110,8 +116,8 @@ class UtilityHelper {
     }
 
     static buttonify(target, callback) {
-        if (!TweenTrain) {
-            import TweenTrain from "./tweenTrain";
+        if (!this.TweenTrain) {
+            this.TweenTrain = require("./tweenTrain").default;
         }
         UtilityHelper.pulsate(target);
         target.setInteractive();
@@ -121,11 +127,12 @@ class UtilityHelper {
                     return {
                         targets: target,
                         scale: 0.95,
-                        duration: 500,
+                        duration: 100,
                         yoyo: true
                     }
+                }).addEvent(function () {
+                    callback(target);
                 }).run();
-            callback(target);
         })
     }
 
