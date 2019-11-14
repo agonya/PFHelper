@@ -1,4 +1,4 @@
-class OperationsHelper {
+class UtilityHelper {
 
     static createBurstFlowAnimation(from, to, amount = 10, key = "coin", duration = 1) {
         if (from.goldAnimationPlaying) return;
@@ -79,7 +79,7 @@ class OperationsHelper {
     }
 
     static removeSubSegment(type, obj) {
-        for (let t of OperationsHelper.getSubSegment(type, obj)) {
+        for (let t of UtilityHelper.getSubSegment(type, obj)) {
             obj.resizeManager.remove(t);
             t.destroy();
             for (const [key, value] of Object.entries(obj)) {
@@ -109,16 +109,36 @@ class OperationsHelper {
         target.setScale(target.currentScale);
     }
 
+    static buttonify(target, callback) {
+        if (!TweenTrain) {
+            import TweenTrain from "./tweenTrain";
+        }
+        UtilityHelper.pulsate(target);
+        target.setInteractive();
+        target.on("pointerdown", function () {
+            TweenTrain.create(scene)
+                .add(function () {
+                    return {
+                        targets: target,
+                        scale: 0.95,
+                        duration: 500,
+                        yoyo: true
+                    }
+                }).run();
+            callback(target);
+        })
+    }
+
     /**
      * @description Lists the properties of the helper to the console
      *
      * @static
-     * @memberof OperationsHelper
+     * @memberof UtilityHelper
      * 
      * @author Tayfun Turgut <tyfn.trgt@gmail.com>
      */
     static help() {
-        let list = Object.getOwnPropertyNames(OperationsHelper);
+        let list = Object.getOwnPropertyNames(UtilityHelper);
         let logObj = {};
         for (let i = 3; i < list.length - 1; i++) {
             logObj[`property${i-2}`] = list[i];
@@ -131,4 +151,4 @@ class OperationsHelper {
     }
 }
 
-export default OperationsHelper;
+export default UtilityHelper;

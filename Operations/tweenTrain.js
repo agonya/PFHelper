@@ -25,6 +25,8 @@ class TweenTrain {
 		this.currentTween = false;
 		this.finished = false;
 		this.isLooping = false;
+		this.oldTargetValues = false;
+		this.resizeCount = 0;
 	}
 
 	setLooping(isLooping) {
@@ -100,9 +102,52 @@ class TweenTrain {
 							tweenTrain.runNext();
 						}
 					}
+
+					let getProps = function () {
+						if (tweenTrain.oldTargetValues && tweenTrain.resizeCount > 0) {
+							for (let props of tweenTrain.oldTargetValues) {
+								if (Array.isArray(config.targets)) {
+									for (let t of config.targets) {
+										if (props.target === t) {
+											t[props.key] = props.start;
+										}
+									}
+								} else {
+									if (props.target === config.targets) {
+										config.targets[props.key] = props.start;
+									}
+								}
+
+							}
+						}
+					}
+
+					if (config.onStart) {
+						let oldOnStart = config.onStart;
+						config.onStart = function () {
+							oldOnStart();
+							getProps();
+						}
+
+					} else {
+						config.onStart = function () {
+							getProps();
+						}
+					}
+
 					this.currentTween = this.scene.tweens.add(config);
 					this.currentTween.onStop = config.onStop || function () {};
 					this.currentTween.resizeAction = config.resizeAction || "restart";
+
+					if (!this.oldTargetValues) {
+						this.oldTargetValues = [];
+						this.invalidValues = ["x", "y", "scale", "scaleX", "scaleY"];
+						for (let data of this.currentTween.data) {
+							if (!this.invalidValues.includes(data.key)) {
+								this.oldTargetValues.push(data);
+							}
+						}
+					}
 				}
 			}
 		} else {
@@ -125,6 +170,7 @@ class TweenTrain {
 
 	resize() {
 		if (this.currentTween) {
+			this.resizeCount++;
 			if (this.currentTween.resizeAction == "nothing") {} else if (this.currentTween.resizeAction == "skip") {
 				this.currentTween.onStop();
 				this.currentTween.stop();

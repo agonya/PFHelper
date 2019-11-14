@@ -45,7 +45,6 @@ class ColorsHelper {
                         }
                     }
                 } else {
-
                     if (!colorsJSON.colorsWithSubs[colorString]) {
                         if (!colorsJSON.colorPalette[colorString]) {
                             console.warn(`ColorsHelper.GetColor : Invalid color string!
@@ -55,13 +54,11 @@ class ColorsHelper {
                             colorsWithSubs = false;
                         }
                     } else {
-
                         if (!(typeof subCode) == "string") {
                             console.warn(`ColorsHelper.GetColor : Sub code must be of type "integer"!
                             Log => subCode: ${subCode}`);
                             return false;
                         } else {
-
                             if (!colorsJSON.colorsWithSubs[colorString][subCode]) {
                                 console.warn(`ColorsHelper.GetColor : Invalid sub code
                                 Log => subCode: ${subCode}`);
@@ -72,9 +69,6 @@ class ColorsHelper {
                         }
                     }
                 }
-
-
-
             }
         } else {
             console.warn(`ColorsHelper.GetColor : Color string must be of type "string"!
@@ -101,8 +95,6 @@ class ColorsHelper {
                 return Phaser.Display.Color.HexStringToColor(colorsJSON.colorPalette[colorString]).color;
             }
         }
-
-
     }
 
     /**
@@ -135,7 +127,6 @@ class ColorsHelper {
      * @returns {array}
      */
     static gradientColor(startColor = "", endColor = "", colorCount = 10, hex = true) {
-
         let start = this.convertToRGB(startColor);
         let end = this.convertToRGB(endColor);
 
@@ -152,9 +143,7 @@ class ColorsHelper {
             c[2] = start[2] * alpha + (1 - alpha) * end[2];
 
             colors.push(this.convertToHex(c, hex));
-
         }
-
         return colors;
     }
 
