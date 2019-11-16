@@ -3,6 +3,7 @@
  *
  * @class MathsHelper
  */
+
 class MathsHelper {
 
     /**
