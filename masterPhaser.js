@@ -3,7 +3,8 @@ class MasterPhaser {
         this.importHelper = function (module) {
             let list = Object.getOwnPropertyNames(module);
             let logObj = {};
-            for (let i = 3; i < list.length - 1; i++) {
+            console.log(list);
+            for (let i = 2; i < list.length - 1; i++) {
                 logObj[`property${i-2}`] = list[i];
             }
             for (let p in logObj) {
@@ -15,19 +16,20 @@ class MasterPhaser {
             this.scene = config.scene;
 
         if (config.ui)
-            this.ui = scenes.ui;
+            this.ui = config.ui;
 
         if (config.colors)
             this.importHelper(require('./Graphics/colorsHelper').default);
 
-        if (config.graphics)
-            this.importHelper(require('./Graphics/graphicsHelper').default.prototype);
-
         if (config.maths)
             this.importHelper(require('./Maths/mathsHelper').default);
 
-        if (config.operations)
-            this.importHelper(require('./Operations/operationsHelper').default);
+        if (config.utility)
+            this.importHelper(require('./Operations/utilityHelper').default);
+    }
+
+    init(config) {
+        return new MasterPhaser(config);
     }
 }
 

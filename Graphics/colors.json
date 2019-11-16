@@ -2,7 +2,7 @@
     "comment": "author: Yusuke Kawasaki",
 
     "colorsWithSubs": {
-        "red": {
+        "subRed": {
             "50": "#ffebee",
             "100": "#ffcdd2",
             "200": "#ef9a9a",
@@ -18,7 +18,7 @@
             "a400": "#ff1744",
             "a700": "#d50000"
         },
-        "pink": {
+        "subPink": {
             "50": "#fce4ec",
             "100": "#f8bbd0",
             "200": "#f48fb1",
@@ -34,7 +34,7 @@
             "a400": "#f50057",
             "a700": "#c51162"
         },
-        "purple": {
+        "subPurple": {
             "50": "#f3e5f5",
             "100": "#e1bee7",
             "200": "#ce93d8",
@@ -66,7 +66,7 @@
             "a400": "#651fff",
             "a700": "#6200ea"
         },
-        "indigo": {
+        "subIndigo": {
             "50": "#e8eaf6",
             "100": "#c5cae9",
             "200": "#9fa8da",
@@ -82,7 +82,7 @@
             "a400": "#3d5afe",
             "a700": "#304ffe"
         },
-        "blue": {
+        "subBlue": {
             "50": "#e3f2fd",
             "100": "#bbdefb",
             "200": "#90caf9",
@@ -98,7 +98,7 @@
             "a400": "#2979ff",
             "a700": "#2962ff"
         },
-        "lightblue": {
+        "subLightblue": {
             "50": "#e1f5fe",
             "100": "#b3e5fc",
             "200": "#81d4fa",
@@ -114,7 +114,7 @@
             "a400": "#00b0ff",
             "a700": "#0091ea"
         },
-        "cyan": {
+        "subCyan": {
             "50": "#e0f7fa",
             "100": "#b2ebf2",
             "200": "#80deea",
@@ -130,7 +130,7 @@
             "a400": "#00e5ff",
             "a700": "#00b8d4"
         },
-        "teal": {
+        "subTeal": {
             "50": "#e0f2f1",
             "100": "#b2dfdb",
             "200": "#80cbc4",
@@ -146,7 +146,7 @@
             "a400": "#1de9b6",
             "a700": "#00bfa5"
         },
-        "green": {
+        "subGreen": {
             "50": "#e8f5e9",
             "100": "#c8e6c9",
             "200": "#a5d6a7",
@@ -162,7 +162,7 @@
             "a400": "#00e676",
             "a700": "#00c853"
         },
-        "lightgreen": {
+        "subLightgreen": {
             "50": "#f1f8e9",
             "100": "#dcedc8",
             "200": "#c5e1a5",
@@ -178,7 +178,7 @@
             "a400": "#76ff03",
             "a700": "#64dd17"
         },
-        "lime": {
+        "subLime": {
             "50": "#f9fbe7",
             "100": "#f0f4c3",
             "200": "#e6ee9c",
@@ -194,7 +194,7 @@
             "a400": "#c6ff00",
             "a700": "#aeea00"
         },
-        "yellow": {
+        "subYellow": {
             "50": "#fffde7",
             "100": "#fff9c4",
             "200": "#fff59d",
@@ -226,7 +226,7 @@
             "a400": "#ffc400",
             "a700": "#ffab00"
         },
-        "orange": {
+        "subOrange": {
             "50": "#fff3e0",
             "100": "#ffe0b2",
             "200": "#ffcc80",
@@ -258,7 +258,7 @@
             "a400": "#ff3d00",
             "a700": "#dd2c00"
         },
-        "brown": {
+        "subBrown": {
             "50": "#efebe9",
             "100": "#d7ccc8",
             "200": "#bcaaa4",
@@ -270,7 +270,7 @@
             "800": "#4e342e",
             "900": "#3e2723"
         },
-        "grey": {
+        "subGray": {
             "50": "#fafafa",
             "100": "#f5f5f5",
             "200": "#eeeeee",
@@ -282,7 +282,7 @@
             "800": "#424242",
             "900": "#212121"
         },
-        "bluegrey": {
+        "bluegray": {
             "50": "#eceff1",
             "100": "#cfd8dc",
             "200": "#b0bec5",
@@ -323,7 +323,6 @@
         "darkgoldenrod": "#b8860b",
         "darkgray": "#a9a9a9",
         "darkgreen": "#006400",
-        "darkgrey": "#a9a9a9",
         "darkkhaki": "#bdb76b",
         "darkmagenta": "#8b008b",
         "darkolivegreen": "#556b2f",
@@ -334,13 +333,11 @@
         "darkseagreen": "#8fbc8f",
         "darkslateblue": "#483d8b",
         "darkslategray": "#2f4f4f",
-        "darkslategrey": "#2f4f4f",
         "darkturquoise": "#00ced1",
         "darkviolet": "#9400d3",
         "deeppink": "#ff1493",
         "deepskyblue": "#00bfff",
         "dimgray": "#696969",
-        "dimgrey": "#696969",
         "dodgerblue": "#1e90ff",
         "firebrick": "#b22222",
         "floralwhite": "#fffaf0",
@@ -353,7 +350,6 @@
         "gray": "#808080",
         "green": "#008000",
         "greenyellow": "#adff2f",
-        "grey": "#808080",
         "honeydew": "#f0fff0",
         "hotpink": "#ff69b4",
         "indianred": "#cd5c5c",
@@ -370,13 +366,11 @@
         "lightgoldenrodyellow": "#fafad2",
         "lightgray": "#d3d3d3",
         "lightgreen": "#90ee90",
-        "lightgrey": "#d3d3d3",
         "lightpink": "#ffb6c1",
         "lightsalmon": "#ffa07a",
         "lightseagreen": "#20b2aa",
         "lightskyblue": "#87cefa",
         "lightslategray": "#778899",
-        "lightslategrey": "#778899",
         "lightsteelblue": "#b0c4de",
         "lightyellow": "#ffffe0",
         "lime": "#00ff00",
@@ -430,7 +424,6 @@
         "skyblue": "#87ceeb",
         "slateblue": "#6a5acd",
         "slategray": "#708090",
-        "slategrey": "#708090",
         "snow": "#fffafa",
         "springgreen": "#00ff7f",
         "steelblue": "#4682b4",

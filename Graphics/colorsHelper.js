@@ -26,6 +26,7 @@ class ColorsHelper {
      * @memberof ColorsHelper
      */
     static getColor(colorString = "", subCode = "", hex = true) {
+
         let colorsWithSubs = false;
         // validate parameters
         if ((typeof colorString) == "string") {
@@ -201,28 +202,6 @@ class ColorsHelper {
         color[1] = parseInt((trim(hex)).substring(2, 4), 16);
         color[2] = parseInt((trim(hex)).substring(4, 6), 16);
         return color;
-    }
-
-
-    /**
-     * @description Lists the properties of the helper to the console
-     *
-     * @static
-     * @memberof ColorsHelper
-     * 
-     * @author Tayfun Turgut <tyfn.trgt@gmail.com>
-     */
-    static help() {
-        let list = Object.getOwnPropertyNames(ColorsHelper);
-        let logObj = {};
-        for (let i = 3; i < list.length - 1; i++) {
-            logObj[`property${i-2}`] = list[i];
-        }
-        for (let p in logObj) {
-            console.log(
-                `${p}: ${logObj[p]}`
-            )
-        }
     }
 }
 
