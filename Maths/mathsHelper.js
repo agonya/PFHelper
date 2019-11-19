@@ -19,7 +19,7 @@ class MathsHelper {
      * 
      * @author Tayfun Turgut <tyfn.trgt@gmail.com>
      */
-    static constrain(input = 0, min = 0, max = 1) {
+    static constrainNumber(input = 0, min = 0, max = 1) {
         if ((typeof input) != "number" || (typeof min) != "number" || (typeof max) != "number") {
             console.warn(`MathsHelper.Constrain : All parameters must be of type "number"!
             Log => input: ${input}, min: ${min}, max: ${max}`);
@@ -222,27 +222,6 @@ class MathsHelper {
             }
         }
         return tempArray;
-    }
-
-    /**
-     * @description Lists the properties of the helper to the console
-     *
-     * @static
-     * @memberof MathsHelper
-     * 
-     * @author Tayfun Turgut <tyfn.trgt@gmail.com>
-     */
-    static help() {
-        let list = Object.getOwnPropertyNames(MathsHelper);
-        let logObj = {};
-        for (let i = 3; i < list.length - 1; i++) {
-            logObj[`property${i-2}`] = list[i];
-        }
-        for (let p in logObj) {
-            console.log(
-                `${p}: ${logObj[p]}`
-            )
-        }
     }
 }
 

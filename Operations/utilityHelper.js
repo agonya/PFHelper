@@ -1,23 +1,24 @@
 class UtilityHelper {
+    static createBurstFlowAnimation(from, to, amount = 10, atlas = false, key = "coin", duration = 1) {
+        let PFHelper = this;
 
-    constructor() {
-        if (TweenTrain) {
-            this.tweenTrain = TweenTrain;
-        }
-    }
-
-    static createBurstFlowAnimation(from, to, amount = 10, key = "coin", duration = 1) {
         if (from.goldAnimationPlaying) return;
         from.goldAnimationPlaying = true;
 
         from.goldAnimationArray = []
 
-        for (let i of MathsHelper.generateBlankArray(amount)) {
-            let tempCoin = scene.add.image(0, 0, key)
-                .setOrigin(0.5, 0.5);
+        for (let i of this.generateBlankArray(amount)) {
+            let tempCoin;
+            if (atlas) {
+                tempCoin = this.scene.add.image(0, 0, "atlas", key)
+                    .setOrigin(0.5, 0.5);
+            } else {
+                tempCoin = this.scene.add.image(0, 0, key)
+                    .setOrigin(0.5, 0.5);
+            }
             tempCoin.alpha = 0;
-            scene.resizeManager.add(tempCoin, function () {
-                this.currentScale = Math.min(currentWidth / this.width, currentHeight / this.height);
+            this.scene.resizeManager.add(tempCoin, function () {
+                this.currentScale = Math.min(this.scene.lastWidth / this.width, this.scene.lastHeight / this.height);
                 this.resizeX = from.x;
                 this.resizeY = from.y;
                 this.currentScale *= 0.05;
@@ -29,22 +30,22 @@ class UtilityHelper {
         }
 
         from.goldAnimationTrainArray = [];
-        for (let o of game.goldAnimationArray) {
+        for (let o of from.goldAnimationArray) {
             from.goldAnimationTrainArray.push(
-                TweenTrain.create(scene)
+                this.TweenTrain.create(this.scene)
                 .add(function () {
                     return {
                         targets: o,
                         duration: 500,
                         alpha: 1,
-                        x: o.x + from.displayWidth * 1.5 * MathsHelper.mapValue(
+                        x: o.x + from.displayWidth * 1.5 * PFHelper.mapValue(
                             Math.random(),
                             0,
                             1,
                             -1,
                             1
                         ),
-                        y: o.y + from.displayHeight * 1.5 * MathsHelper.mapValue(
+                        y: o.y + from.displayHeight * 1.5 * PFHelper.mapValue(
                             Math.random(),
                             0,
                             1,
@@ -63,7 +64,7 @@ class UtilityHelper {
                 })
             )
         }
-        TweenTrain.create(scene)
+        this.TweenTrain.create(this.scene)
             .addParallel(from.goldAnimationTrainArray)
             .addEvent(function () {
                 from.goldAnimationPlaying = false;
@@ -74,32 +75,9 @@ class UtilityHelper {
             }).run()
     }
 
-    static getSubSegment(type, obj) {
-        let tempArr = [];
-        for (const [key, value] of Object.entries(obj)) {
-            if (key.substr(0, type.length) == type) {
-                tempArr = [...tempArr, value];
-            }
-        }
-        return tempArr;
-    }
-
-    static removeSubSegment(type, obj) {
-        for (let t of UtilityHelper.getSubSegment(type, obj)) {
-            obj.resizeManager.remove(t);
-            t.destroy();
-            for (const [key, value] of Object.entries(obj)) {
-                if (value == t) {
-                    delete obj[key];
-                    break;
-                }
-            }
-        }
-    }
-
     static pulsate(target, scaleMultiplier = 0.9, duration = 600) {
         if (target.pulseTween) return;
-        target.pulseTween = scene.tweens.add({
+        target.pulseTween = this.scene.tweens.add({
             targets: target,
             scale: target.currentScale * scaleMultiplier,
             duration: duration,
@@ -116,13 +94,10 @@ class UtilityHelper {
     }
 
     static buttonify(target, callback) {
-        if (!this.TweenTrain) {
-            this.TweenTrain = require("./tweenTrain").default;
-        }
         UtilityHelper.pulsate(target);
         target.setInteractive();
         target.on("pointerdown", function () {
-            TweenTrain.create(scene)
+            this.TweenTrain.create(this.scene)
                 .add(function () {
                     return {
                         targets: target,
@@ -134,27 +109,6 @@ class UtilityHelper {
                     callback(target);
                 }).run();
         })
-    }
-
-    /**
-     * @description Lists the properties of the helper to the console
-     *
-     * @static
-     * @memberof UtilityHelper
-     * 
-     * @author Tayfun Turgut <tyfn.trgt@gmail.com>
-     */
-    static help() {
-        let list = Object.getOwnPropertyNames(UtilityHelper);
-        let logObj = {};
-        for (let i = 3; i < list.length - 1; i++) {
-            logObj[`property${i-2}`] = list[i];
-        }
-        for (let p in logObj) {
-            console.log(
-                `${p}: ${logObj[p]}`
-            )
-        }
     }
 }
 
