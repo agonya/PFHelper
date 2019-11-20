@@ -11,6 +11,12 @@ class TweenTrain {
 		return train;
 	}
 
+	/**
+	 *@
+	 *
+	 * @static
+	 * @memberof TweenTrain
+	 */
 	static resize() {
 		for (let i = this.allTrains.length - 1; i >= 0; i--) {
 			if (!this.allTrains[i].finished) {

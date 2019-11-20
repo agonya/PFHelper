@@ -1,15 +1,21 @@
 import colorsJSON from "./colors.json";
 
 /**
- *
+ * @classdesc
+ * ColorsHelper has many functions regarding colors. The main reason this was created is to enable users to choose colors
+ * from a predetermined set of colors.
  *
  * @class ColorsHelper
+ * @memberof PFHelper
+ * 
+ * @author Tayfun Turgut <tyfn.trgt@gmail.com>
+ * @author Tunahan Gormus <tunahangormus@gmail.com>
  */
 class ColorsHelper {
 
     /**
      * @description Converts the color from color palette to code usable Phaser Color Type. <br>
-     * Colors: <br>
+     * Example colors: <br>
      * red, pink, purple, deeppurple, indigo, blue, lightblue, cyan, teal, green, <br>
      * lightgreen, lime, yellow, amber, orange, deeporange, brown, grey, bluegrey <br>
      * Subcodes: <br>
@@ -20,12 +26,14 @@ class ColorsHelper {
      * @param {string} [subCode=""] - A subcode to the main color which darkens it as it is increased.
      * @param {boolean} [hex=true] - false: returns a number instead of color with "#" prefix
      * @returns {string} || {number} || false
+     * 
      * @author Tayfun Turgut <tyfn.trgt@gmail.com>
      * @author Tunahan Gormus <tunahangormus@gmail.com>
      * 
      * @memberof ColorsHelper
      */
     static getColor(colorString = "", subCode = "", hex = true) {
+
         let colorsWithSubs = false;
         // validate parameters
         if ((typeof colorString) == "string") {
@@ -242,28 +250,6 @@ class ColorsHelper {
         color[1] = parseInt((trim(hex)).substring(2, 4), 16);
         color[2] = parseInt((trim(hex)).substring(4, 6), 16);
         return color;
-    }
-
-
-    /**
-     * @description Lists the properties of the helper to the console
-     *
-     * @static
-     * @memberof ColorsHelper
-     * 
-     * @author Tayfun Turgut <tyfn.trgt@gmail.com>
-     */
-    static help() {
-        let list = Object.getOwnPropertyNames(ColorsHelper);
-        let logObj = {};
-        for (let i = 3; i < list.length - 1; i++) {
-            logObj[`property${i-2}`] = list[i];
-        }
-        for (let p in logObj) {
-            console.log(
-                `${p}: ${logObj[p]}`
-            )
-        }
     }
 }
 
