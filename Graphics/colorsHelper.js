@@ -2,8 +2,8 @@ import colorsJSON from "./colors.json";
 
 /**
  * @classdesc
- * ColorsHelper has many functions regarding colors. The main reason this was created is to enable users to choose colors
- * from a predetermined set of colors.
+ * ColorsHelper has many functions regarding colors.
+ * The main reason this was created is to enable users to choose colors from a predetermined set.
  *
  * @class ColorsHelper
  * @memberof PFHelper
@@ -23,9 +23,9 @@ class ColorsHelper {
      *
      * @static
      * @param {string} [colorString=""] - A string representing the main name of the color e.g. "red"
-     * @param {string} [subCode=""] - A subcode to the main color which darkens it as it is increased.
+     * @param {string} [subCode=""] - A subcode to the main color which darkens it as it is increased. Leave this as "" to get color from palette.
      * @param {boolean} [hex=true] - false: returns a number instead of color with "#" prefix
-     * @returns {string} || {number} || false
+     * @returns {(string|number|boolean)}
      * 
      * @author Tayfun Turgut <tyfn.trgt@gmail.com>
      * @author Tunahan Gormus <tunahangormus@gmail.com>
@@ -80,9 +80,6 @@ class ColorsHelper {
                         }
                     }
                 }
-
-
-
             }
         } else {
             console.warn(`ColorsHelper.GetColor : Color string must be of type "string"!
@@ -109,8 +106,6 @@ class ColorsHelper {
                 return Phaser.Display.Color.HexStringToColor(colorsJSON.colorPalette[colorString]).color;
             }
         }
-
-
     }
 
     /**
@@ -121,7 +116,7 @@ class ColorsHelper {
      * @param {boolean} [hex=true] - false: returns a number instead of color with "#" prefix
      * 
      * @author Tunahan Gormus <tunahangormus@gmail.com>
-     * @returns {string}
+     * @returns {(string|boolean)}
      */
     static getRandomColor(hex = true) {
         let randomColor = (Math.random() * 0xFFFFFF << 0).toString(16);
@@ -167,13 +162,13 @@ class ColorsHelper {
     }
 
     /**
-     * @description Convert Rgb to hex string
+     * @description Similar to mapValue, this function lerps one color towards other and you can get any intermediate color with ratio.
      *
      * @static
      * @memberof ColorsHelper
      * @param {string} [startColor = ""] A string representing "start color" of the gradient array.
      * @param {string} [endColor = ""] A string representing "end color" of the gradient array.
-     * @param {number} [colorCount = 10] Size of the gradient array.
+     * @param {number} [ratio = 1] A number between 0-1 to get the intermediate color.
      * @param {string} [hex = "true"] false: returns a number instead of color with "#" prefix
      * 
      * @author Tunahan Gormus <tunahangormus@gmail.com>
@@ -197,7 +192,7 @@ class ColorsHelper {
     }
 
     /**
-     * @description Convert Rgb to hex string
+     * @description Convert RGB to hex string
      *
      * @static
      * @memberof ColorsHelper

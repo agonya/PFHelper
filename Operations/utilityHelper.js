@@ -2,15 +2,10 @@ class UtilityHelper {
     static createBurstFlowAnimation(from, to, amount = 10, atlas = false, key = "coin", duration = 1) {
         let PFHelper = this;
 
-        if (from.goldAnimationPlaying) return;
-        from.goldAnimationPlaying = true;
-
-        from.goldAnimationArray = []
-
-        for (let i of this.generateBlankArray(amount)) {
+        for (let i = 0; i < amount; i++) {
             let tempCoin;
             if (atlas) {
-                tempCoin = this.scene.add.image(0, 0, "atlas", key)
+                tempCoin = this.scene.add.image(0, 0, atlas, key)
                     .setOrigin(0.5, 0.5);
             } else {
                 tempCoin = this.scene.add.image(0, 0, key)
@@ -18,61 +13,39 @@ class UtilityHelper {
             }
             tempCoin.alpha = 0;
             this.scene.resizeManager.add(tempCoin, function () {
-                this.currentScale = Math.min(this.scene.lastWidth / this.width, this.scene.lastHeight / this.height);
-                this.resizeX = from.x;
-                this.resizeY = from.y;
+                let o = this;
+
+                this.currentScale = Math.min(PFHelper.scene.lastWidth / this.width, PFHelper.scene.lastHeight / this.height);
                 this.currentScale *= 0.05;
                 this.setScale(this.currentScale);
+                this.resizeX = from.x;
+                this.resizeY = from.y;
                 this.x = this.resizeX;
                 this.y = this.resizeY;
-            });
-            from.goldAnimationArray.push(tempCoin);
-        }
 
-        from.goldAnimationTrainArray = [];
-        for (let o of from.goldAnimationArray) {
-            from.goldAnimationTrainArray.push(
-                this.TweenTrain.create(this.scene)
-                .add(function () {
-                    return {
-                        targets: o,
-                        duration: 500,
-                        alpha: 1,
-                        x: o.x + from.displayWidth * 1.5 * PFHelper.mapValue(
-                            Math.random(),
-                            0,
-                            1,
-                            -1,
-                            1
-                        ),
-                        y: o.y + from.displayHeight * 1.5 * PFHelper.mapValue(
-                            Math.random(),
-                            0,
-                            1,
-                            -1,
-                            1
-                        )
+                PFHelper.scene.tweens.killTweensOf(this);
+                PFHelper.scene.tweens.add({
+                    targets: o,
+                    duration: 500,
+                    alpha: 1,
+                    x: from.x + (Math.random() * 2 - 1) * 200,
+                    y: from.y + (Math.random() * 2 - 1) * 200,
+                    onComplete: function () {
+                        PFHelper.scene.tweens.add({
+                            targets: o,
+                            x: to.x,
+                            y: to.y,
+                            duration: 1000 * duration - 500,
+                            onComplete: function () {
+                                PFHelper.scene.resizeManager.remove(o);
+                                o.destroy();
+                                o = null;
+                            }
+                        })
                     }
                 })
-                .add(function () {
-                    return {
-                        targets: o,
-                        x: to.x,
-                        y: to.y,
-                        duration: duration * 1000
-                    }
-                })
-            )
+            });
         }
-        this.TweenTrain.create(this.scene)
-            .addParallel(from.goldAnimationTrainArray)
-            .addEvent(function () {
-                from.goldAnimationPlaying = false;
-                for (let o of from.goldAnimationArray) {
-                    o.destroy();
-                    o = null;
-                }
-            }).run()
     }
 
     static pulsate(target, scaleMultiplier = 0.9, duration = 600) {

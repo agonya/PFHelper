@@ -31,17 +31,8 @@ class PFHelper {
         if (config.maths)
             this.importHelper(require('./Maths/mathsHelper').default);
 
-        if (config.utility) {
+        if (config.utility)
             this.importHelper(require('./Operations/utilityHelper').default);
-
-            if (!config.maths) {
-                this.importHelper(require('./Maths/mathsHelper').default);
-            }
-
-            if (!config.tweenTrain) {
-                this.tweenTrain = require('./Operations/tweenTrain').default;
-            }
-        }
 
         if (config.objectRegister) {
             let objectRegister = require('./Operations/objectRegister').default;
