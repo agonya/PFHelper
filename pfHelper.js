@@ -1,4 +1,5 @@
 import ResizeManager from './Operations/resizeManager';
+import ObjectRegister from './Operations/objectRegister';
 
 class PFHelper {
     constructor(config) {
@@ -18,6 +19,7 @@ class PFHelper {
 
         for (let i = 0; i < scenes.length; i++) {
             scenes[i].resizeManager = new ResizeManager();
+            scenes[i].objectRegister = new ObjectRegister(scenes[i]);
             if (i == 0) {
                 this.scene = scenes[i];
             } else if (i == 1) {
@@ -31,31 +33,19 @@ class PFHelper {
         if (config.maths)
             this.importHelper(require('./Maths/mathsHelper').default);
 
-        if (config.utility)
-            this.importHelper(require('./Operations/utilityHelper').default);
-
-        if (config.objectRegister) {
-            let objectRegister = require('./Operations/objectRegister').default;
-
-            if (this.scene) {
-                this.scene.objectRegister = new objectRegister(this.scene);
-            }
-
-            if (this.ui) {
-                this.ui.objectRegister = new objectRegister(this.ui);
-            }
+        if (config.dynamicTween) {
+            this.dynamicTween = require('./Operations/dynamicTween').default;
         }
 
         if (config.timer)
             this.timer = require('./Operations/timer').default
 
-        if (config.dynamicTween) {
-            this.dynamicTween = require('./Operations/dynamicTween').default;
-        }
-
         if (config.tweenTrain) {
             this.tweenTrain = require('./Operations/tweenTrain').default;
         }
+
+        if (config.utility)
+            this.importHelper(require('./Operations/utilityHelper').default);
 
         this.resize = function () {
             if (this.scene) {

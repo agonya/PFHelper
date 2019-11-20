@@ -35,7 +35,6 @@ class ColorsHelper {
     static getColor(colorString = "", subCode = "", hex = true) {
 
         let colorsWithSubs = false;
-        // validate parameters
         if ((typeof colorString) == "string") {
             if (colorString.length == 0) {
                 console.warn(`ColorsHelper.GetColor : 0 length color string was given!
@@ -53,7 +52,6 @@ class ColorsHelper {
                         }
                     }
                 } else {
-
                     if (!colorsJSON.colorsWithSubs[colorString]) {
                         if (!colorsJSON.colorPalette[colorString]) {
                             console.warn(`ColorsHelper.GetColor : Invalid color string!
@@ -63,13 +61,11 @@ class ColorsHelper {
                             colorsWithSubs = false;
                         }
                     } else {
-
                         if (!(typeof subCode) == "string") {
                             console.warn(`ColorsHelper.GetColor : Sub code must be of type "integer"!
                             Log => subCode: ${subCode}`);
                             return false;
                         } else {
-
                             if (!colorsJSON.colorsWithSubs[colorString][subCode]) {
                                 console.warn(`ColorsHelper.GetColor : Invalid sub code
                                 Log => subCode: ${subCode}`);
@@ -91,7 +87,6 @@ class ColorsHelper {
             if (subCode.length == 0) {
                 subCode = 900;
             }
-
             if (hex) {
                 return colorsJSON.colorsWithSubs[colorString][String(subCode)];
             } else {
@@ -135,15 +130,30 @@ class ColorsHelper {
      * 
      * @author Tunahan Gormus <tunahangormus@gmail.com>
      * @author Euler Junior <https://stackoverflow.com/users/5274306/euler-junior>
-     * @returns {array}
+     * @returns {(array|boolean)}
      */
     static getGradientColor(startColor = "", endColor = "", colorCount = 10, hex = true) {
+        if ((typeof startColor) != "string") {
+            console.warn(`ColorsHelper.getGradientColor : Start color must be of type "string"!
+            Log => startColor: ${startColor}`);
+            return false;
+        } else {
+            if ((typeof endColor) != "string") {
+                console.warn(`ColorsHelper.getGradientColor : End color must be of type "string"!
+                Log => endColor: ${endColor}`);
+                return false;
+            } else {
+                if (!Number.isInteger(colorCount)) {
+                    console.warn(`ColorsHelper.getGradientColor : Color count must be of type "integer"!
+                    Log => colorCount: ${colorCount}`);
+                    return false;
+                }
+            }
+        }
 
         let start = this.convertToRGB(startColor);
         let end = this.convertToRGB(endColor);
-
         let alpha = 0.0;
-
         let colors = [];
 
         for (var i = 0; i < colorCount; i++) {
@@ -155,9 +165,7 @@ class ColorsHelper {
             c[2] = end[2] * alpha + (1 - alpha) * start[2];
 
             colors.push(this.convertToHex(c, hex));
-
         }
-
         return colors;
     }
 
@@ -175,6 +183,24 @@ class ColorsHelper {
      * @returns {string}
      */
     static colorLerp(startColor = "", endColor = "", ratio = 1, hex = true) {
+        if ((typeof startColor) != "string") {
+            console.warn(`ColorsHelper.colorLerp : Start color must be of type "string"!
+            Log => startColor: ${startColor}`);
+            return false;
+        } else {
+            if ((typeof endColor) != "string") {
+                console.warn(`ColorsHelper.colorLerp : End color must be of type "string"!
+                Log => endColor: ${endColor}`);
+                return false;
+            } else {
+                if ((typeof ratio) != "number") {
+                    console.warn(`ColorsHelper.colorLerp : Ratio must be of type "number"!
+                    Log => ratio: ${ratio}`);
+                    return false;
+                }
+            }
+        }
+
         let start = this.convertToRGB(startColor);
         let end = this.convertToRGB(endColor);
 
@@ -196,13 +222,19 @@ class ColorsHelper {
      *
      * @static
      * @memberof ColorsHelper
-     * @param {array} [rgb] An array which contains the RGB values
-     * @param {string} [hex = "true"] false: returns a number instead of color with "#" prefix
+     * @param {array} [rgb = [0, 0, 0]] An array which contains the RGB values
+     * @param {string} [hex = true] false: returns a number instead of color with "#" prefix
      * 
      * @author Tunahan Gormus <tunahangormus@gmail.com>
-     * @returns {array}
+     * @returns {(array|false)}
      */
-    static convertToHex(rgb, hex = "true") {
+    static convertToHex(rgb = [0, 0, 0], hex = true) {
+        if (!Array.isArray(rgb)) {
+            console.warn(`ColorsHelper.convertToHex : RGB must be of type "array"!
+            Log => rgb: ${rgb}`);
+            return false;
+        }
+
         let calculateHex = function (c) {
             let s = "0123456789abcdef";
             let i = parseInt(c);
@@ -225,10 +257,14 @@ class ColorsHelper {
      * @param {string} [hex = ""] Hex string "can start with '#' or '0x' or without any"
      * 
      * @author Tunahan Gormus <tunahangormus@gmail.com>
-     * @returns {array}
+     * @returns {(array|false)}
      */
     static convertToRGB(hex) {
-        /* Removes '#' and '0x' in color hex string */
+        if ((typeof hex) != "string") {
+            console.warn(`ColorsHelper.convertToRGB : Hex must be of type "string"!
+            Log => hex: ${hex}`);
+            return false;
+        }
 
         let trim = function (s) {
             if (s.charAt(0) == '#') {
