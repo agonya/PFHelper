@@ -1,15 +1,21 @@
 import colorsJSON from "./colors.json";
 
 /**
- *
+ * @classdesc
+ * ColorsHelper has many functions regarding colors. The main reason this was created is to enable users to choose colors
+ * from a predetermined set of colors.
  *
  * @class ColorsHelper
+ * @memberof PFHelper
+ * 
+ * @author Tayfun Turgut <tyfn.trgt@gmail.com>
+ * @author Tunahan Gormus <tunahangormus@gmail.com>
  */
 class ColorsHelper {
 
     /**
      * @description Converts the color from color palette to code usable Phaser Color Type. <br>
-     * Colors: <br>
+     * Example colors: <br>
      * red, pink, purple, deeppurple, indigo, blue, lightblue, cyan, teal, green, <br>
      * lightgreen, lime, yellow, amber, orange, deeporange, brown, grey, bluegrey <br>
      * Subcodes: <br>
@@ -20,6 +26,7 @@ class ColorsHelper {
      * @param {string} [subCode=""] - A subcode to the main color which darkens it as it is increased.
      * @param {boolean} [hex=true] - false: returns a number instead of color with "#" prefix
      * @returns {string} || {number} || false
+     * 
      * @author Tayfun Turgut <tyfn.trgt@gmail.com>
      * @author Tunahan Gormus <tunahangormus@gmail.com>
      * 

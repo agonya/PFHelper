@@ -1,6 +1,6 @@
 import ResizeManager from './Operations/resizeManager';
 
-class MasterPhaser {
+class PFHelper {
     constructor(config) {
         this.importHelper = function (module) {
             let list = Object.getOwnPropertyNames(module);
@@ -38,7 +38,9 @@ class MasterPhaser {
                 this.importHelper(require('./Maths/mathsHelper').default);
             }
 
-            this.tweenTrain = require('./Operations/tweenTrain').default;
+            if (!config.tweenTrain) {
+                this.tweenTrain = require('./Operations/tweenTrain').default;
+            }
         }
 
         if (config.objectRegister) {
@@ -60,6 +62,10 @@ class MasterPhaser {
             this.dynamicTween = require('./Operations/dynamicTween').default;
         }
 
+        if (config.tweenTrain) {
+            this.tweenTrain = require('./Operations/tweenTrain').default;
+        }
+
         this.resize = function () {
             if (this.scene) {
                 this.scene.resizeManager.resize();
@@ -70,10 +76,6 @@ class MasterPhaser {
             }
         }
     }
-
-    init(config) {
-        return new MasterPhaser(config);
-    }
 }
 
-export default MasterPhaser;
+export default PFHelper;
