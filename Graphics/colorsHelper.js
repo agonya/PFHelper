@@ -45,6 +45,7 @@ class ColorsHelper {
                         }
                     }
                 } else {
+
                     if (!colorsJSON.colorsWithSubs[colorString]) {
                         if (!colorsJSON.colorPalette[colorString]) {
                             console.warn(`ColorsHelper.GetColor : Invalid color string!
@@ -54,11 +55,13 @@ class ColorsHelper {
                             colorsWithSubs = false;
                         }
                     } else {
+
                         if (!(typeof subCode) == "string") {
                             console.warn(`ColorsHelper.GetColor : Sub code must be of type "integer"!
                             Log => subCode: ${subCode}`);
                             return false;
                         } else {
+
                             if (!colorsJSON.colorsWithSubs[colorString][subCode]) {
                                 console.warn(`ColorsHelper.GetColor : Invalid sub code
                                 Log => subCode: ${subCode}`);
@@ -69,6 +72,9 @@ class ColorsHelper {
                         }
                     }
                 }
+
+
+
             }
         } else {
             console.warn(`ColorsHelper.GetColor : Color string must be of type "string"!
@@ -95,6 +101,8 @@ class ColorsHelper {
                 return Phaser.Display.Color.HexStringToColor(colorsJSON.colorPalette[colorString]).color;
             }
         }
+
+
     }
 
     /**
@@ -126,7 +134,8 @@ class ColorsHelper {
      * @author Euler Junior <https://stackoverflow.com/users/5274306/euler-junior>
      * @returns {array}
      */
-    static gradientColor(startColor = "", endColor = "", colorCount = 10, hex = true) {
+    static getGradientColor(startColor = "", endColor = "", colorCount = 10, hex = true) {
+
         let start = this.convertToRGB(startColor);
         let end = this.convertToRGB(endColor);
 
@@ -138,13 +147,45 @@ class ColorsHelper {
             let c = [];
             alpha += (1.0 / colorCount);
 
-            c[0] = start[0] * alpha + (1 - alpha) * end[0];
-            c[1] = start[1] * alpha + (1 - alpha) * end[1];
-            c[2] = start[2] * alpha + (1 - alpha) * end[2];
+            c[0] = end[0] * alpha + (1 - alpha) * start[0];
+            c[1] = end[1] * alpha + (1 - alpha) * start[1];
+            c[2] = end[2] * alpha + (1 - alpha) * start[2];
 
             colors.push(this.convertToHex(c, hex));
+
         }
+
         return colors;
+    }
+
+    /**
+     * @description Convert Rgb to hex string
+     *
+     * @static
+     * @memberof ColorsHelper
+     * @param {string} [startColor = ""] A string representing "start color" of the gradient array.
+     * @param {string} [endColor = ""] A string representing "end color" of the gradient array.
+     * @param {number} [colorCount = 10] Size of the gradient array.
+     * @param {string} [hex = "true"] false: returns a number instead of color with "#" prefix
+     * 
+     * @author Tunahan Gormus <tunahangormus@gmail.com>
+     * @returns {string}
+     */
+    static colorLerp(startColor = "", endColor = "", ratio = 1, hex = true) {
+        let start = this.convertToRGB(startColor);
+        let end = this.convertToRGB(endColor);
+
+        if (ratio > 1)
+            ratio = 1;
+        else if (ratio < 0)
+            ratio = 0;
+
+        let c = [];
+        c[0] = end[0] * ratio + (1 - ratio) * start[0];
+        c[1] = end[1] * ratio + (1 - ratio) * start[1];
+        c[2] = end[2] * ratio + (1 - ratio) * start[2];
+
+        return (this.convertToHex(c, hex));
     }
 
     /**
