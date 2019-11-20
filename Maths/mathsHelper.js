@@ -1,7 +1,14 @@
 /**
- * 
+ * @classdesc
+ * MathsHelper aims to aid you in doing somewhat complicated mathematical algorithms.
+ * It mainly has functions that are easy to calculate, but are susceptible of repeated usage in normal code.
+ * So, we wrapped functions that we liked and put them in MathsHelper for you.
  *
  * @class MathsHelper
+ * 
+ * @author Tayfun Turgut <tyfn.trgt@gmail.com>
+ * 
+ * @memberof PFHelper
  */
 
 class MathsHelper {
@@ -11,13 +18,14 @@ class MathsHelper {
      * Useful especially when you don't know the return value of input and want to constrain it somehow. 
      *
      * @static
+     * @function
+     * 
      * @param {number} [input=0] - Input value to be constrained
      * @param {number} [min=0] - Minimum value of the constrain
      * @param {number} [max=1] - Maximum value of the constrain
-     * @returns {number} [result=0] || false
-     * @memberof MathsHelper
+     * @returns {(number|boolean)}
      * 
-     * @author Tayfun Turgut <tyfn.trgt@gmail.com>
+     * @memberof MathsHelper
      */
     static constrainNumber(input = 0, min = 0, max = 1) {
         if ((typeof input) != "number" || (typeof min) != "number" || (typeof max) != "number") {
@@ -41,15 +49,15 @@ class MathsHelper {
      * dist({x: x1 , y: y1}, {x: x2, y: y2});
      *
      * @static
+     * @function
+     * 
      * @param {object} obj1 - First object
      * @param {object} obj2 - Second object
-     * @returns {number} || false
-     * @memberof MathsHelper
+     * @returns {(number|boolean)}
      * 
-     * @author Tayfun Turgut <tyfn.trgt@gmail.com>
+     * @memberof MathsHelper
      */
     static dist(obj1, obj2) {
-        // validate parameters
         if ((typeof obj1.x != "number") || (typeof obj1.y != "number") || (typeof obj2.x != "number") || (typeof obj2.y != "number")) {
             console.warn(`MathsHelper.Dist : Invalid parameter(s)!
             Log => obj1: ${JSON.stringify(obj1)}, obj2: ${JSON.stringify(obj2)}`);
@@ -63,18 +71,18 @@ class MathsHelper {
      * @description Linearly maps value from the range (a..b) to (c..d)
      *
      * @static
+     * @function
+     * 
      * @param {number} [value=0] - The value to be mapped
      * @param {number} [a=0] - Lower boundary of input
      * @param {number} [b=1] - Upper boundary of input
      * @param {number} [c=0] - Lower boundary of output
      * @param {number} [d=1] - Upper boundary of output
-     * @returns {number} || false
-     * @memberof MathsHelper
+     * @returns {(number|boolean)}
      * 
-     * @author Tayfun Turgut <tyfn.trgt@gmail.com>
+     * @memberof MathsHelper
      */
     static mapValue(value = 0, a = 0, b = 1, c = 0, d = 1) {
-        // validate parameters
         if ((typeof value != "number") || (typeof a != "number") || (typeof b != "number") || (typeof c != "number") || (typeof d != "number")) {
             console.warn(`MathsHelper.MapValue : All parameters must be of type "number"!
             Log => value: ${value}, a: ${a}, b: ${b}, c: ${c}, d: ${d}`);
@@ -98,13 +106,14 @@ class MathsHelper {
      * and constrains the number to positive or negative region if needed.
      *
      * @static
+     * @function
+     * 
      * @param {number} [num=0] - The number to be converted
      * @param {number} [decimal=0] - The number of decimal places to be used in the conversion. Can be 0, 1 or 2
      * @param {string} [constrain="none"] - "pos": positive constrain, "neg": negative constrain, "none": no constrain
-     * @returns {string} || false
-     * @memberof MathsHelper
+     * @returns {(string|boolean)}
      * 
-     * @author Tayfun Turgut <tyfn.trgt@gmail.com>
+     * @memberof MathsHelper
      */
     static convertNumToCustomFormat(num = 0, decimal = 0, constrain = "none") {
         if ((typeof num != "number")) {
@@ -146,7 +155,6 @@ class MathsHelper {
             newNum = num.toFixed(0)
         }
 
-        // get number before period
         let preNum = newNum;
         if (newNum.length >= 10) {
             preNum = `${newNum.slice(0, newNum.length - 9)}`;
@@ -156,13 +164,11 @@ class MathsHelper {
             preNum = `${newNum.slice(0, newNum.length - 3)}`;
         }
 
-        // don't put period if decimal = 0
         let dot = "";
         if (decimal > 0 && newNum.length >= 4) {
             dot = ".";
         }
 
-        // get number after period
         let postNum = "";
         if (newNum.length >= 10) {
             postNum = `${newNum.slice(newNum.length - 9, newNum.length - 9 + decimal)}`;
@@ -172,7 +178,6 @@ class MathsHelper {
             postNum = `${newNum.slice(newNum.length - 3, newNum.length - 3 + decimal)}`;
         }
 
-        // insert annotation
         let postLetter = "";
         if (newNum.length >= 10) {
             postLetter = `B`;
@@ -191,12 +196,13 @@ class MathsHelper {
      * This is for simplifying "for" loops and must only be used for the most basic cases.
      *
      * @static
+     * @function
+     * 
      * @param {number} [n=0] - Number of elements in the array
      * @param {boolean} [ascending=true] - Changes whether the blank array ascend or descend in values.
-     * @returns {object} || false
-     * @memberof MathsHelper
+     * @returns {(object|boolean)}
      * 
-     * @author Tayfun Turgut <tyfn.trgt@gmail.com>
+     * @memberof MathsHelper
      */
     static generateBlankArray(n = 0, ascending = true) {
         if (!Number.isInteger(n)) {

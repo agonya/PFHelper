@@ -4,12 +4,12 @@ import colorsJSON from "./colors.json";
  * @classdesc
  * ColorsHelper has many functions regarding colors.
  * The main reason this was created is to enable users to choose colors from a predetermined set.
- *
- * @class ColorsHelper
- * @memberof PFHelper
  * 
- * @author Tayfun Turgut <tyfn.trgt@gmail.com>
+ * @class ColorsHelper
+ * 
  * @author Tunahan Gormus <tunahangormus@gmail.com>
+ *
+ * @memberof PFHelper
  */
 class ColorsHelper {
 
@@ -22,13 +22,12 @@ class ColorsHelper {
      * 50, 100, 200, ... 900, (a100, a200, a400, a700) <br>
      *
      * @static
+     * @function
+     * 
      * @param {string} [colorString=""] - A string representing the main name of the color e.g. "red"
      * @param {string} [subCode=""] - A subcode to the main color which darkens it as it is increased. Leave this as "" to get color from palette.
      * @param {boolean} [hex=true] - false: returns a number instead of color with "#" prefix
      * @returns {(string|number|boolean)}
-     * 
-     * @author Tayfun Turgut <tyfn.trgt@gmail.com>
-     * @author Tunahan Gormus <tunahangormus@gmail.com>
      * 
      * @memberof ColorsHelper
      */
@@ -107,11 +106,12 @@ class ColorsHelper {
      * @description Returns a random color
      *
      * @static
-     * @memberof ColorsHelper
-     * @param {boolean} [hex=true] - false: returns a number instead of color with "#" prefix
+     * @function
      * 
-     * @author Tunahan Gormus <tunahangormus@gmail.com>
+     * @param {boolean} [hex=true] - false: returns a number instead of color with "#" prefix
      * @returns {(string|boolean)}
+     * 
+     * @memberof ColorsHelper
      */
     static getRandomColor(hex = true) {
         let randomColor = (Math.random() * 0xFFFFFF << 0).toString(16);
@@ -122,15 +122,15 @@ class ColorsHelper {
      * @description Returns a gradient color array from given start color and end color.
      *
      * @static
-     * @memberof ColorsHelper
+     * @function
+     * 
      * @param {string} [startColor = ""] A string representing "start color" of the gradient array.
      * @param {string} [endColor = ""] A string representing "end color" of the gradient array.
      * @param {number} [colorCount = 10] Size of the gradient array.
      * @param {boolean} [hex=true] - false: returns a number instead of color with "#" prefix
-     * 
-     * @author Tunahan Gormus <tunahangormus@gmail.com>
-     * @author Euler Junior <https://stackoverflow.com/users/5274306/euler-junior>
      * @returns {(array|boolean)}
+     * 
+     * @memberof ColorsHelper
      */
     static getGradientColor(startColor = "", endColor = "", colorCount = 10, hex = true) {
         if ((typeof startColor) != "string") {
@@ -173,14 +173,15 @@ class ColorsHelper {
      * @description Similar to mapValue, this function lerps one color towards other and you can get any intermediate color with ratio.
      *
      * @static
-     * @memberof ColorsHelper
+     * @function
+     * 
      * @param {string} [startColor = ""] A string representing "start color" of the gradient array.
      * @param {string} [endColor = ""] A string representing "end color" of the gradient array.
      * @param {number} [ratio = 1] A number between 0-1 to get the intermediate color.
      * @param {string} [hex = "true"] false: returns a number instead of color with "#" prefix
+     * @returns {(string|boolean)}
      * 
-     * @author Tunahan Gormus <tunahangormus@gmail.com>
-     * @returns {string}
+     * @memberof ColorsHelper
      */
     static colorLerp(startColor = "", endColor = "", ratio = 1, hex = true) {
         if ((typeof startColor) != "string") {
@@ -221,12 +222,13 @@ class ColorsHelper {
      * @description Convert RGB to hex string
      *
      * @static
-     * @memberof ColorsHelper
+     * @function
+     * 
      * @param {array} [rgb = [0, 0, 0]] An array which contains the RGB values
      * @param {string} [hex = true] false: returns a number instead of color with "#" prefix
+     * @returns {(array|boolean)}
      * 
-     * @author Tunahan Gormus <tunahangormus@gmail.com>
-     * @returns {(array|false)}
+     * @memberof ColorsHelper
      */
     static convertToHex(rgb = [0, 0, 0], hex = true) {
         if (!Array.isArray(rgb)) {
@@ -253,11 +255,12 @@ class ColorsHelper {
      * @description Convert a hex string to an RGB triplet
      *
      * @static
-     * @memberof ColorsHelper
-     * @param {string} [hex = ""] Hex string "can start with '#' or '0x' or without any"
+     * @function
      * 
-     * @author Tunahan Gormus <tunahangormus@gmail.com>
-     * @returns {(array|false)}
+     * @param {string} [hex = ""] Hex string "can start with '#' or '0x' or without any"
+     * @returns {(array|boolean)}
+     * 
+     * @memberof ColorsHelper
      */
     static convertToRGB(hex) {
         if ((typeof hex) != "string") {

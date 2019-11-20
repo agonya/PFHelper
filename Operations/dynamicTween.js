@@ -5,8 +5,11 @@
  * created via the TweenManager.
  *
  * @class DynamicTween
- * @memberof PFHelper
  * @constructor
+ * 
+ * @author Kadir Mert Okumus <kadirmertokumus@gmail.com>
+ * 
+ * @memberof PFHelper
  */
 class DynamicTween {
 
