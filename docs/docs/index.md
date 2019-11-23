@@ -25,13 +25,13 @@ Rectangle shape, built-in game object of phaser.
 
   
 
-```js
 
-var  rect = scene.add.rectangle(x, y, width, height, fillColor);
+    :::javascript
+    var  rect = scene.add.rectangle(x, y, width, height, fillColor);
 
-//var rect = scene.add.rectangle(x, y, width, height, fillColor, fillAlpha);
+    //var rect = scene.add.rectangle(x, y, width, height, fillColor, fillAlpha);
 
-```
+
 
   
 
