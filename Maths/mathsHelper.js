@@ -38,8 +38,8 @@ class MathsHelper {
     }
 
     /**
-     * @description Finds the distance between two objects. <br>
-     * If you want to use points, then pass parameters as: <br>
+     * @description Finds the distance between two 2D objects. <br>
+     * If you want to use points and not Phaser objects, then pass parameters as: <br>
      * dist({x: x1 , y: y1}, {x: x2, y: y2});
      *
      * @static
@@ -93,9 +93,9 @@ class MathsHelper {
     static convertNumToCustomFormat(num = 0, decimal = 0, constrain = "none") {
         let newNum;
         if (constrain == "pos") {
-            newNum = this.constrain(num, 0, Infinity).toFixed(0);
+            newNum = this.constrainNumber(num, 0, Infinity).toFixed(0);
         } else if (constrain == "neg") {
-            newNum = this.constrain(num, -1 * Infinity, 0).toFixed(0);
+            newNum = this.constrainNumber(num, -1 * Infinity, 0).toFixed(0);
         } else if (constrain == "none") {
             newNum = num.toFixed(0)
         }

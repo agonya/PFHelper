@@ -67,20 +67,18 @@ class UtilityHelper {
     }
 
     static buttonify(target, callback) {
-        UtilityHelper.pulsate(target);
+        this.pulsate(target);
         target.setInteractive();
-        target.on("pointerdown", function () {
-            this.TweenTrain.create(this.scene)
-                .add(function () {
-                    return {
-                        targets: target,
-                        scale: 0.95,
-                        duration: 100,
-                        yoyo: true
-                    }
-                }).addEvent(function () {
-                    callback(target);
-                }).run();
+        this.unpulsate(target);
+        target.resize();
+        this.scene.tweens.add({
+            targets: target,
+            scale: 0.95,
+            duration: 100,
+            yoyo: true,
+            onComplete: function () {
+                callback(target);
+            }
         })
     }
 }

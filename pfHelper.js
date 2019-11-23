@@ -55,6 +55,8 @@ class PFHelper {
             if (this.ui) {
                 this.ui.resizeManager.resize();
             }
+
+            if (this.tweenTrain) this.tweenTrain.resize();
         }
     }
 }

@@ -1,6 +1,7 @@
 site_name: PFHelper Documentation Page
 nav:
     - Home: index.md
+    - MathsHelper: mathsHelper.md
     - About: about.md
 theme:
   name: 'material'
