@@ -2,7 +2,7 @@ import colorsJSON from "./colors.json";
 
 /**
  * @classdesc
- * ColorsHelper has many functions regarding colors.
+ * ColorsHelper has many functions regarding colors. <br>
  * The main reason this was created is to enable users to choose colors from a predetermined set.
  * 
  * @class ColorsHelper
@@ -27,7 +27,7 @@ class ColorsHelper {
      * @param {string} [colorString=""] - A string representing the main name of the color e.g. "red"
      * @param {string} [subCode=""] - A subcode to the main color which darkens it as it is increased. Leave this as "" to get color from palette.
      * @param {boolean} [hex=true] - false: returns a number instead of color with "#" prefix
-     * @returns {(string|number|boolean)}
+     * @returns {(string|number)}
      * 
      * @memberof ColorsHelper
      */
@@ -109,7 +109,7 @@ class ColorsHelper {
      * @function
      * 
      * @param {boolean} [hex=true] - false: returns a number instead of color with "#" prefix
-     * @returns {(string|boolean)}
+     * @returns {(string|number)}
      * 
      * @memberof ColorsHelper
      */
@@ -128,29 +128,11 @@ class ColorsHelper {
      * @param {string} [endColor = ""] A string representing "end color" of the gradient array.
      * @param {number} [colorCount = 10] Size of the gradient array.
      * @param {boolean} [hex=true] - false: returns a number instead of color with "#" prefix
-     * @returns {(array|boolean)}
+     * @returns {object}
      * 
      * @memberof ColorsHelper
      */
     static getGradientColor(startColor = "", endColor = "", colorCount = 10, hex = true) {
-        if ((typeof startColor) != "string") {
-            console.warn(`ColorsHelper.getGradientColor : Start color must be of type "string"!
-            Log => startColor: ${startColor}`);
-            return false;
-        } else {
-            if ((typeof endColor) != "string") {
-                console.warn(`ColorsHelper.getGradientColor : End color must be of type "string"!
-                Log => endColor: ${endColor}`);
-                return false;
-            } else {
-                if (!Number.isInteger(colorCount)) {
-                    console.warn(`ColorsHelper.getGradientColor : Color count must be of type "integer"!
-                    Log => colorCount: ${colorCount}`);
-                    return false;
-                }
-            }
-        }
-
         let start = this.convertToRGB(startColor);
         let end = this.convertToRGB(endColor);
         let alpha = 0.0;
@@ -184,24 +166,6 @@ class ColorsHelper {
      * @memberof ColorsHelper
      */
     static colorLerp(startColor = "", endColor = "", ratio = 1, hex = true) {
-        if ((typeof startColor) != "string") {
-            console.warn(`ColorsHelper.colorLerp : Start color must be of type "string"!
-            Log => startColor: ${startColor}`);
-            return false;
-        } else {
-            if ((typeof endColor) != "string") {
-                console.warn(`ColorsHelper.colorLerp : End color must be of type "string"!
-                Log => endColor: ${endColor}`);
-                return false;
-            } else {
-                if ((typeof ratio) != "number") {
-                    console.warn(`ColorsHelper.colorLerp : Ratio must be of type "number"!
-                    Log => ratio: ${ratio}`);
-                    return false;
-                }
-            }
-        }
-
         let start = this.convertToRGB(startColor);
         let end = this.convertToRGB(endColor);
 
@@ -226,17 +190,11 @@ class ColorsHelper {
      * 
      * @param {array} [rgb = [0, 0, 0]] An array which contains the RGB values
      * @param {string} [hex = true] false: returns a number instead of color with "#" prefix
-     * @returns {(array|boolean)}
+     * @returns {(string|number)}
      * 
      * @memberof ColorsHelper
      */
     static convertToHex(rgb = [0, 0, 0], hex = true) {
-        if (!Array.isArray(rgb)) {
-            console.warn(`ColorsHelper.convertToHex : RGB must be of type "array"!
-            Log => rgb: ${rgb}`);
-            return false;
-        }
-
         let calculateHex = function (c) {
             let s = "0123456789abcdef";
             let i = parseInt(c);
@@ -258,17 +216,11 @@ class ColorsHelper {
      * @function
      * 
      * @param {string} [hex = ""] Hex string "can start with '#' or '0x' or without any"
-     * @returns {(array|boolean)}
+     * @returns {object}
      * 
      * @memberof ColorsHelper
      */
     static convertToRGB(hex) {
-        if ((typeof hex) != "string") {
-            console.warn(`ColorsHelper.convertToRGB : Hex must be of type "string"!
-            Log => hex: ${hex}`);
-            return false;
-        }
-
         let trim = function (s) {
             if (s.charAt(0) == '#') {
                 return s.substring(1, 7);
@@ -283,6 +235,7 @@ class ColorsHelper {
         color[0] = parseInt((trim(hex)).substring(0, 2), 16);
         color[1] = parseInt((trim(hex)).substring(2, 4), 16);
         color[2] = parseInt((trim(hex)).substring(4, 6), 16);
+
         return color;
     }
 }

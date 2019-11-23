@@ -1,7 +1,7 @@
 /**
  * @classdesc
- * One instance per scene is automatically created when PFHelper is imported.
- * ObjectRegister is responsible for keeping track of objects, automatically asigning them resize functions
+ * One instance per scene is automatically created when PFHelper is imported. <br>
+ * ObjectRegister is responsible for keeping track of objects, automatically asigning them resize functions <br>
  * and most importantly, gives them names.
  *
  * @class ObjectRegister
@@ -32,38 +32,46 @@ class ObjectRegister {
      *
      * @param {string} [segment="game"]
      * @param {string} [name="temp"]
-     * @param {object} obj
+     * @param {object} [obj={}]
      * @returns {(object|boolean)}
      * 
      * @memberof ObjectRegister
      */
-    registerObj(segment = "game", name = "temp", obj) {
-        if ((typeof segment) != "string") {
-            console.warn(`ObjectRegister.registerObj : Segment must be of type "string"!
-            Log => segment: ${segment}`);
-            return false;
-        } else {
-            if ((typeof name) != "string") {
-                console.warn(`ObjectRegister.registerObj : Name must be of type "string"!
-                Log => name: ${name}`);
-                return false;
-            } else {
-                if ((typeof obj) != "object") {
-                    console.warn(`ObjectRegister.registerObj : Object must be of type "object"!
-                    Log => obj: ${obj}`);
-                    return false;
-                }
-            }
-        }
+    registerObj(config = {
+        segment: "game",
+        name: "temp",
+        obj: {}
+    }) {
+        let tempObject = config.obj;
+        tempObject.name = config.name;
 
-        let tempObject = obj;
-        tempObject.name = name;
-
-        this.objects[`${segment}${name.charAt(0).toUpperCase() + name.slice(1)}`] = tempObject;
+        this.objects[`${config.segment}${config.name.charAt(0).toUpperCase() + config.name.slice(1)}`] = tempObject;
 
         return tempObject;
     }
 
+    /**
+     * @description Registers an image. 
+     *
+     * @param {string} [config={
+     *         segment: "game",
+     *         name: "temp",
+     *         atlas: false,
+     *         key: "",
+     *         scale: function () {
+     *             return 1;
+     *         },
+     *         position: function () {
+     *             return {
+     *                 x: 0,
+     *                 y: 0
+     *             }
+     *         }
+     *     }]
+     * 
+     * @returns {(object|boolean)}
+     * @memberof ObjectRegister
+     */
     registerImage(config = {
         segment: "game",
         name: "temp",
@@ -96,27 +104,54 @@ class ObjectRegister {
             this.bounds = this.getBounds();
         })
 
-        this.objects[`${segment}${name.charAt(0).toUpperCase() + name.slice(1)}`] = tempImage;
+        this.objects[`${config.segment}${config.name.charAt(0).toUpperCase() + config.name.slice(1)}`] = tempImage;
 
         return tempImage;
     }
 
-    registerRectangle(segment = "game", name = "temp", scale = function () {
-        return {
-            scaleX: 1,
-            scaleY: 1
-        };
-    }, position = function () {
-        return {
-            x: 0,
-            y: 0
+    /**
+     * @description Registers a rectangle. Note that scaleX and scaleY must be given seperately to ensure the rectangle resizes correctly.
+     *
+     * @param {string} [config={
+     *         segment: "game",
+     *         name: "temp",
+     *         scale: function () {
+     *             return {
+     *                 scaleX: 1,
+     *                 scaleY: 1
+     *             };
+     *         },
+     *         position: function () {
+     *             return {
+     *                 x: 0,
+     *                 y: 0
+     *             }
+     *         }
+     *     }]
+     * @returns {(object|boolean)}
+     * @memberof ObjectRegister
+     */
+    registerRectangle(config = {
+        segment: "game",
+        name: "temp",
+        scale: function () {
+            return {
+                scaleX: 1,
+                scaleY: 1
+            };
+        },
+        position: function () {
+            return {
+                x: 0,
+                y: 0
+            }
         }
     }) {
         let tempRectangle;
         tempRectangle = this.scene.add.rectangle(0, 0, 100, 100);
-        tempRectangle.name = name;
-        tempRectangle.getResizeScale = scale;
-        tempRectangle.getResizePos = position;
+        tempRectangle.name = config.name;
+        tempRectangle.getResizeScale = config.scale;
+        tempRectangle.getResizePos = config.position;
         this.scene.resizeManager.add(tempRectangle, function () {
             this.scaleX = this.getResizeScale().scaleX;
             this.scaleY = this.getResizeScale().scaleY;
@@ -126,15 +161,30 @@ class ObjectRegister {
             this.bounds = this.getBounds();
         })
 
-        this.objects[`${segment}${name.charAt(0).toUpperCase() + name.slice(1)}`] = tempRectangle;
+        this.objects[`${config.segment}${config.name.charAt(0).toUpperCase() + config.name.slice(1)}`] = tempRectangle;
 
         return tempRectangle;
     }
 
+    /**
+     * @description Gets an object from register by segment and name.
+     *
+     * @param {string} segment 
+     * @param {string} name
+     * @returns
+     * @memberof ObjectRegister
+     */
     getObject(segment, name) {
         return this.objects[`${segment}${name.charAt(0).toUpperCase() + name.slice(1)}`];
     }
 
+    /**
+     * @description Returns an array that contains all objects registered in the given segment.
+     *
+     * @param {string} segment
+     * @returns
+     * @memberof ObjectRegister
+     */
     getSegment(segment) {
         let tempArr = [];
         for (const [key, value] of Object.entries(this.scene.objectRegister.objects)) {
@@ -145,6 +195,13 @@ class ObjectRegister {
         return tempArr;
     }
 
+    /**
+     * @description Removes (removes from resizemanager and Phaserly destroys) all objects registered in the given segment.
+     * Note that all these objects must be Phaser objects, so caution is advised.
+     *
+     * @param {string} segment
+     * @memberof ObjectRegister
+     */
     removeSegment(segment) {
         for (let t of this.getSegment(segment, this.scene.objectRegister.objects)) {
             this.scene.resizeManager.remove(t);
