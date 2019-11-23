@@ -4,3 +4,6 @@ nav:
     - About: about.md
 theme:
   name: 'material'
+markdown_extensions:
+  - codehilite
+  - admonition

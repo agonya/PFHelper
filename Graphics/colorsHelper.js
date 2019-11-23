@@ -157,8 +157,8 @@ class ColorsHelper {
      * @static
      * @function
      * 
-     * @param {string} [startColor = ""] A string representing "start color" of the gradient array.
-     * @param {string} [endColor = ""] A string representing "end color" of the gradient array.
+     * @param {string} [startColor = ""] A string representing "start color".
+     * @param {string} [endColor = ""] A string representing "end color".
      * @param {number} [ratio = 1] A number between 0-1 to get the intermediate color.
      * @param {string} [hex = "true"] false: returns a number instead of color with "#" prefix
      * @returns {(string|boolean)}
