@@ -65,22 +65,6 @@ class UtilityHelper {
         target.pulseTween = false;
         target.setScale(target.currentScale);
     }
-
-    static buttonify(target, callback) {
-        this.pulsate(target);
-        target.setInteractive();
-        this.unpulsate(target);
-        target.resize();
-        this.scene.tweens.add({
-            targets: target,
-            scale: 0.95,
-            duration: 100,
-            yoyo: true,
-            onComplete: function () {
-                callback(target);
-            }
-        })
-    }
 }
 
 export default UtilityHelper;

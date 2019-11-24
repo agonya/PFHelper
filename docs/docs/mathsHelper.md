@@ -90,7 +90,7 @@ Convert number to K-M-B notation, with given decimals, and constrains the number
 See [the 'aa' notation](https://gram.gs/gramlog/formatting-big-numbers-aa-notation/)
 
     :::javascript
-    let num = PFHelper.convertNumToCustomFormat(num, decimal, constrain)
+    let custom = PFHelper.convertNumToCustomFormat(num, decimal, constrain)
 
 - `num: 0`: The number to be converted
 - `decimal: 0`: The number of decimal places to be used in the conversion. Can be 0, 1 or 2
@@ -102,3 +102,25 @@ See [the 'aa' notation](https://gram.gs/gramlog/formatting-big-numbers-aa-notati
         let test = PFHelper.convertNumToCustomFormat(10000, 1, "pos")
         console.log(test);
         // 10.0K
+
+### generateBlankArray
+
+- Generate a blank array in replacement of an "i" loop.
+
+Generate a blank array in which the value of the elements of the array are equal to their index numbers. This way, you can just use `for (let i of generateBlankArray(n))` instead of using the `i` syntax. This is for simplifying `for` loops and must only be used for the most basic cases.
+
+    :::javascript
+    let array = PFHelper.generateBlankArray(n, ascending)
+
+- `n: 0`: Number of elements in the array
+- `ascending: true`: Changes whether the blank array ascend or descend in values.
+
+- Example:
+
+        :::javascript
+        let test = PFHelper.generateBlankArray(5, true)
+        console.log(test);
+        // [0, 1, 2, 3, 4]
+        let test = PFHelper.generateBlankArray(5, false)
+        console.log(test);
+        // [4, 3, 2, 1, 0]

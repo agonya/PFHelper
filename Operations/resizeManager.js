@@ -1,6 +1,6 @@
 /**
  * @description The default resize manager used by the object register.
- * Comes with default when importing PFHelper.
+ * Comes as default when importing PFHelper.
  *
  * @class ResizeManager
  * 
@@ -24,7 +24,7 @@ class ResizeManager {
 	 * @param {function} resizeFunction
 	 * @memberof ResizeManager
 	 */
-	add(object, resizeFunction) {
+	add(object = {}, resizeFunction) {
 		this.objects.push(object);
 		object.resize = resizeFunction;
 		object.resize();
@@ -36,7 +36,7 @@ class ResizeManager {
 	 * @param {object} object
 	 * @memberof ResizeManager
 	 */
-	remove(object) {
+	remove(object = {}) {
 		for (let i = this.objects.length - 1; i >= 0; i--) {
 			if (this.objects[i] == object) {
 				this.objects.splice(i, 1);

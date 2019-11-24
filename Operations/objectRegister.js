@@ -30,10 +30,10 @@ class ObjectRegister {
      * Registers objects with the following format: "segmentName". <br>
      * You can manually get the objects array from: Phaser Scene => objectRegister => {object} objects
      *
-     * @param {string} [segment="game"]
-     * @param {string} [name="temp"]
+     * @param {string} [segment="game"] The segment of the object
+     * @param {string} [name="temp"] The name of the object
      * @param {object} [obj={}]
-     * @returns {(object|boolean)}
+     * @returns {object}
      * 
      * @memberof ObjectRegister
      */
@@ -169,23 +169,23 @@ class ObjectRegister {
     /**
      * @description Gets an object from register by segment and name.
      *
-     * @param {string} segment 
-     * @param {string} name
+     * @param {string} [segment="game"] The segment of the object
+     * @param {string} [name="temp"]
      * @returns
      * @memberof ObjectRegister
      */
-    getObject(segment, name) {
+    getObject(segment = "game", name = "temp") {
         return this.objects[`${segment}${name.charAt(0).toUpperCase() + name.slice(1)}`];
     }
 
     /**
      * @description Returns an array that contains all objects registered in the given segment.
      *
-     * @param {string} segment
+     * @param {string} [segment="game"] The segment of the object
      * @returns
      * @memberof ObjectRegister
      */
-    getSegment(segment) {
+    getSegment(segment = "game") {
         let tempArr = [];
         for (const [key, value] of Object.entries(this.scene.objectRegister.objects)) {
             if (key.substr(0, segment.length) == segment) {
@@ -199,10 +199,10 @@ class ObjectRegister {
      * @description Removes (removes from resizemanager and Phaserly destroys) all objects registered in the given segment.
      * Note that all these objects must be Phaser objects, so caution is advised.
      *
-     * @param {string} segment
+     * @param {string} segment The segment of the object
      * @memberof ObjectRegister
      */
-    removeSegment(segment) {
+    removeSegment(segment = "game") {
         for (let t of this.getSegment(segment, this.scene.objectRegister.objects)) {
             this.scene.resizeManager.remove(t);
             t.destroy();
