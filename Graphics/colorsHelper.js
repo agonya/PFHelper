@@ -32,55 +32,38 @@ class ColorsHelper {
      * @memberof ColorsHelper
      */
     static getColor(colorString = "", subCode = "", hex = true) {
-
         let colorsWithSubs = false;
-        if ((typeof colorString) == "string") {
-            if (colorString.length == 0) {
-                console.warn(`ColorsHelper.GetColor : 0 length color string was given!
-                Log => colorString: ${colorString}`);
-                return false;
-            } else {
-                if (subCode.length == 0) {
-                    if (!colorsJSON.colorPalette[colorString]) {
-                        if (!colorsJSON.colorsWithSubs[colorString]) {
-                            console.warn(`ColorsHelper.GetColor : Invalid color string!
+            if (subCode.length == 0) {
+                if (!colorsJSON.colorPalette[colorString]) {
+                    if (!colorsJSON.colorsWithSubs[colorString]) {
+                        console.warn(`ColorsHelper.GetColor : Invalid color string!
                             Log => colorString: ${colorString}`);
+                        return false;
+                    } else {
+                        colorsWithSubs = true;
+                    }
+                }
+            } else {
+                if (!colorsJSON.colorsWithSubs[colorString]) {
+                    if (!colorsJSON.colorPalette[colorString]) {
+                        return false;
+                    } else {
+                        colorsWithSubs = false;
+                    }
+                } else {
+                    if (!(typeof subCode) == "string") {
+                        return false;
+                    } else {
+                        if (!colorsJSON.colorsWithSubs[colorString][subCode]) {
+                            console.warn(`ColorsHelper.GetColor : Invalid sub code
+                                Log => subCode: ${subCode}`);
                             return false;
                         } else {
                             colorsWithSubs = true;
                         }
                     }
-                } else {
-                    if (!colorsJSON.colorsWithSubs[colorString]) {
-                        if (!colorsJSON.colorPalette[colorString]) {
-                            console.warn(`ColorsHelper.GetColor : Invalid color string!
-                            Log => colorString: ${colorString}`);
-                            return false;
-                        } else {
-                            colorsWithSubs = false;
-                        }
-                    } else {
-                        if (!(typeof subCode) == "string") {
-                            console.warn(`ColorsHelper.GetColor : Sub code must be of type "integer"!
-                            Log => subCode: ${subCode}`);
-                            return false;
-                        } else {
-                            if (!colorsJSON.colorsWithSubs[colorString][subCode]) {
-                                console.warn(`ColorsHelper.GetColor : Invalid sub code
-                                Log => subCode: ${subCode}`);
-                                return false;
-                            } else {
-                                colorsWithSubs = true;
-                            }
-                        }
-                    }
                 }
             }
-        } else {
-            console.warn(`ColorsHelper.GetColor : Color string must be of type "string"!
-            Log => colorString: ${colorString}`);
-            return false;
-        }
 
         if (colorsWithSubs) {
             if (subCode.length == 0) {

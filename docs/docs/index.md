@@ -30,6 +30,7 @@ PFHelper is a library that was created for one simple purpose: to make the resid
                 game: app.main.game,
                 colors: true,
                 maths: true,
+                animations: true,
                 dynamicTween: true,
                 timer: true,
                 tweenTrain: true,
@@ -48,7 +49,7 @@ PFHelper is a library that was created for one simple purpose: to make the resid
             - Description: This library enables you to create, pause, resume and stop any number of timers for in-game uses.
         - `tweenTrain`: Enables TweenTrain library.
             - Description: A highly contreversial but useful library that is right on the middle spot of a tween and a dynamic tween.
-        - `utility`: Enables UtilityHelper library.
+        - `animations`: Enables AnimationsHelper library.
             - Description: This helper class contains functions that can make your life easier when developing the playables. They are mainly object manipulation wrappers, such as pulsating an object or creating a flow of gold from an origin to a target.
 
     - After this, we think that calling `resizeAll(lastWidth, lastHeight)` is beneficial.
