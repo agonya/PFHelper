@@ -14,7 +14,18 @@ See [{Phaser Scene}](https://rexrainbow.github.io/phaser3-rex-notes/docs/site/sc
 
 * Author: Tayfun Turgut
 
+## Functions List
+
+* [registerObj()](#registerObj)
+* [registerImage()](#registerImage)
+* [registerRectangle()](#registerRectangle)
+* [getObject()](#getObject)
+* [getSegment()](#getSegment)
+* [removeSegment()](#removeSegment)
+
 ## Usage
+
+<a name="registerObj"></a>
 
 ### registerObj
 
@@ -56,6 +67,8 @@ Register any object. Note that you must provide the object with its resize funct
         // intro
         console.log(test.name);
         // background
+
+<a name="registerImage"></a>
 
 ### registerImage
 
@@ -104,6 +117,8 @@ Registers an image to the manager. Here, you don't need to specify the resize fu
             }
         });
 
+<a name="registerRectangle"></a>
+
 ### registerRectangle
 
 - Register a rectangle to the manager.
@@ -145,6 +160,8 @@ Registers a rectangle to the manager. Here, you don't need to specify the resize
             }
         });
 
+<a name="getObject"></a>
+
 ### getObject
 
 - Get an object based on its segment and name.
@@ -164,6 +181,8 @@ Gets an object from register by segment and name.
         console.log(test);
         // {object} introBackground
 
+<a name="getSegment"></a>
+
 ### getSegment
 
 - Get all objects registered to the specified segment.
@@ -181,6 +200,8 @@ Returns an array that contains all objects registered in the given segment.
         let test = ui.objectRegister.getSegment("intro");
         console.log(test);
         // {array} [introBackground]
+
+<a name="removeSegment"></a>
 
 ### removeSegment
 
