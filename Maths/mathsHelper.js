@@ -181,7 +181,7 @@ class MathsHelper {
         for (let i = 0; i < array.length; i++) {
             final[i] = [];
             let x1 = array[i][0] - point[0];
-            let y1 = array[i][0] - point[1];
+            let y1 = array[i][1] - point[1];
             let x2 = Math.cos(angle) * (x1) - Math.sin(angle) * y1;
             let y2 = Math.sin(angle) * (x1) + Math.cos(angle) * y1;
             final[i][0] = x2 + point[0];
