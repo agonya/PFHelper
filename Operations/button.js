@@ -300,27 +300,5 @@ class ButtonHelper {
         }
         return btn;
     }
-
-    /**
-     * @description Lists the properties of the helper to the console
-     *
-     * @static
-     * @memberof ButtonHelper
-     * 
-     * @author Kadir Mert Okumuş <kadirmertokumus@gmail.com>
-     */
-    static help() {
-        let list = Object.getOwnPropertyNames(ButtonHelper);
-        let logObj = {};
-        for (let i = 3; i < list.length - 1; i++) {
-            logObj[`property${i-2}`] = list[i];
-        }
-        for (let p in logObj) {
-            console.log(
-                `${p}: ${logObj[p]}`
-            )
-        }
-    }
-
 }
 export default ButtonHelper;
