@@ -230,6 +230,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#functions-list" class="md-nav__link">
+    Functions List
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
     Usage
   </a>
@@ -268,6 +275,13 @@
           <li class="md-nav__item">
   <a href="#generateblankarray" class="md-nav__link">
     generateBlankArray
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotatearray" class="md-nav__link">
+    rotateArray
   </a>
   
 </li>
@@ -364,6 +378,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#functions-list" class="md-nav__link">
+    Functions List
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
     Usage
   </a>
@@ -406,6 +427,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#rotatearray" class="md-nav__link">
+    rotateArray
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -434,7 +462,17 @@
 <ul>
 <li>Author: Tayfun Turgut</li>
 </ul>
+<h2 id="functions-list">Functions List</h2>
+<ul>
+<li><a href="#constrainNumber">constrainNumber()</a></li>
+<li><a href="#dist">dist()</a></li>
+<li><a href="#mapValue">mapValue()</a></li>
+<li><a href="#convertNumToCustomFormat">convertNumToCustomFormat()</a></li>
+<li><a href="#generateBlankArray">generateBlankArray()</a></li>
+<li><a href="#rotateArray">rotateArray()</a></li>
+</ul>
 <h2 id="usage">Usage</h2>
+<p><a name="constrainNumber"></a></p>
 <h3 id="constrainnumber">constrainNumber</h3>
 <ul>
 <li>Sandwich a number between two numbers</li>
@@ -457,6 +495,7 @@
 
 </li>
 </ul>
+<p><a name="dist"></a></p>
 <h3 id="dist">dist</h3>
 <ul>
 <li>Distance finder</li>
@@ -492,6 +531,7 @@
 
 </li>
 </ul>
+<p><a name="mapValue"></a></p>
 <h3 id="mapvalue">mapValue</h3>
 <ul>
 <li>Linearly maps value from the range (a..b) to (c..d)</li>
@@ -519,6 +559,7 @@
 
 </li>
 </ul>
+<p><a name="convertNumToCustomFormat"></a></p>
 <h3 id="convertnumtocustomformat">convertNumToCustomFormat</h3>
 <ul>
 <li>1.000 is K, 1.000.000 is M, 1.000.000.000 is B..</li>
@@ -545,6 +586,7 @@ See <a href="https://gram.gs/gramlog/formatting-big-numbers-aa-notation/">the 'a
 
 </li>
 </ul>
+<p><a name="generateBlankArray"></a></p>
 <h3 id="generateblankarray">generateBlankArray</h3>
 <ul>
 <li>Generate a blank array in replacement of an "i" loop.</li>
@@ -567,6 +609,34 @@ See <a href="https://gram.gs/gramlog/formatting-big-numbers-aa-notation/">the 'a
 <span class="kd">let</span> <span class="nx">test</span> <span class="o">=</span> <span class="nx">PFHelper</span><span class="p">.</span><span class="nx">generateBlankArray</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">test</span><span class="p">);</span>
 <span class="c1">// [4, 3, 2, 1, 0]</span>
+</pre></div>
+
+
+</li>
+</ul>
+<p><a name="rotateArray"></a></p>
+<h3 id="rotatearray">rotateArray</h3>
+<ul>
+<li>Rotate an array of points with an angle.</li>
+</ul>
+<p>Rotate a 2D array of x-y couples wrt a point array containing an x-y couple and an angle.</p>
+<div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nx">array</span> <span class="o">=</span> <span class="nx">PFHelper</span><span class="p">.</span><span class="nx">rotateArray</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">point</span><span class="p">,</span> <span class="nx">angle</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li><code>array</code>: 2D array containing x-y pairs of points</li>
+<li><code>point</code>: An array containing x-y values of the anchor point</li>
+<li>
+<p><code>angle</code>: The angle of rotation</p>
+</li>
+<li>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nx">rectPos</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">anchor</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">test</span> <span class="o">=</span> <span class="nx">PFHelper</span><span class="p">.</span><span class="nx">rotateArray</span><span class="p">(</span><span class="nx">rectPos</span><span class="p">,</span> <span class="nx">anchor</span><span class="p">,</span> <span class="mi">90</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">test</span><span class="p">);</span>
+<span class="c1">// [0, 1, 2, 3, 4]</span>
 </pre></div>
 
 
