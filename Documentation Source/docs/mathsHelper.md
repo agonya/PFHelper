@@ -35,7 +35,7 @@ Constrains the input between min and max values. Useful especially when you don'
 
         :::javascript
         let lastWidth = 25;
-        let test = PFHelper.constainNumber(lastWidth, 10, 20);
+        let test = PFHelper.constrainNumber(lastWidth, 10, 20);
         console.log(test);
         // 20
 
