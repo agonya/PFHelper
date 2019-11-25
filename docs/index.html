@@ -242,6 +242,18 @@
 
 
   <li class="md-nav__item">
+    <a href="about/" title="About" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="colorsHelper/" title="ColorsHelper" class="md-nav__link">
       ColorsHelper
     </a>
@@ -292,18 +304,6 @@
   <li class="md-nav__item">
     <a href="resizeManager/" title="ResizeManager" class="md-nav__link">
       ResizeManager
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="about/" title="About" class="md-nav__link">
-      About
     </a>
   </li>
 
@@ -405,8 +405,8 @@
 <div class="codehilite"><pre><span></span><span class="nx">PFHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PFHelperConstructor</span><span class="p">({</span>
     <span class="nx">game</span><span class="o">:</span> <span class="nx">app</span><span class="p">.</span><span class="nx">main</span><span class="p">.</span><span class="nx">game</span><span class="p">,</span>
     <span class="nx">colors</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nx">maths</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="nx">animations</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">maths</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="nx">dynamicTween</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="nx">timer</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="nx">tweenTrain</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -420,6 +420,10 @@
     See <a href="https://rexrainbow.github.io/phaser3-rex-notes/docs/site/game/">{Phaser Game}</a></li>
 <li><code>colors</code>: Enables ColorsHelper library.<ul>
 <li>Description: ColorsHelper has many functions regarding colors. The main reason this was created is to enable users to choose colors from a predetermined set.</li>
+</ul>
+</li>
+<li><code>animations</code>: Enables AnimationsHelper library.<ul>
+<li>Description: This helper class contains functions that can make your life easier when developing the playables. They are mainly object manipulation wrappers, such as pulsating an object or creating a flow of gold from an origin to a target.</li>
 </ul>
 </li>
 <li><code>maths</code>: Enables MathsHelper library.<ul>
@@ -438,8 +442,8 @@
 <li>Description: A highly contreversial but useful library that is right on the middle spot of a tween and a dynamic tween.</li>
 </ul>
 </li>
-<li><code>animations</code>: Enables AnimationsHelper library.<ul>
-<li>Description: This helper class contains functions that can make your life easier when developing the playables. They are mainly object manipulation wrappers, such as pulsating an object or creating a flow of gold from an origin to a target.</li>
+<li><code>utility</code>: Enables UtilityHelper library.<ul>
+<li>Description: Contains fun little functions that can be helpful, like removing an item from an array.</li>
 </ul>
 </li>
 </ul>
@@ -474,13 +478,13 @@
       <nav class="md-footer-nav__inner md-grid">
         
         
-          <a href="colorsHelper/" title="ColorsHelper" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="about/" title="About" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                ColorsHelper
+                About
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
