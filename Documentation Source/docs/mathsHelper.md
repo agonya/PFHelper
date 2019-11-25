@@ -6,7 +6,18 @@ MathsHelper aims to aid you in doing somewhat complicated mathematical algorithm
 
 * Author: Tayfun Turgut
 
+## Functions List
+
+* [constrainNumber()](#constrainNumber)
+* [dist()](#dist)
+* [mapValue()](#mapValue)
+* [convertNumToCustomFormat()](#convertNumToCustomFormat)
+* [generateBlankArray()](#generateBlankArray)
+* [rotateArray()](#rotateArray)
+
 ## Usage
+
+<a name="constrainNumber"></a>
 
 ### constrainNumber
 
@@ -27,6 +38,8 @@ Constrains the input between min and max values. Useful especially when you don'
         let test = PFHelper.constainNumber(lastWidth, 10, 20);
         console.log(test);
         // 20
+
+<a name="dist"></a>
 
 ### dist
 
@@ -60,6 +73,8 @@ Finds the distance between two 2D objects.
         console.log(test);
         // 5
 
+<a name="mapValue"></a>
+
 ### mapValue
 
 - Linearly maps value from the range (a..b) to (c..d)
@@ -82,6 +97,8 @@ Finds the distance between two 2D objects.
         console.log(test);
         // 50
 
+<a name="convertNumToCustomFormat"></a>
+
 ### convertNumToCustomFormat
 
 - 1.000 is K, 1.000.000 is M, 1.000.000.000 is B..
@@ -102,6 +119,8 @@ See [the 'aa' notation](https://gram.gs/gramlog/formatting-big-numbers-aa-notati
         let test = PFHelper.convertNumToCustomFormat(10000, 1, "pos")
         console.log(test);
         // 10.0K
+
+<a name="generateBlankArray"></a>
 
 ### generateBlankArray
 
@@ -124,3 +143,27 @@ Generate a blank array in which the value of the elements of the array are equal
         let test = PFHelper.generateBlankArray(5, false)
         console.log(test);
         // [4, 3, 2, 1, 0]
+
+<a name="rotateArray"></a>
+
+### rotateArray
+
+- Rotate an array of points with an angle.
+
+Rotate a 2D array of x-y couples wrt a point array containing an x-y couple and an angle.
+
+    :::javascript
+    let array = PFHelper.rotateArray(array, point, angle)
+
+- `array`: 2D array containing x-y pairs of points
+- `point`: An array containing x-y values of the anchor point
+- `angle`: The angle of rotation
+
+- Example:
+
+        :::javascript
+        let rectPos = [50, 50];
+        let anchor = [0, 0];
+        let test = PFHelper.rotateArray(rectPos, anchor, 90);
+        console.log(test);
+        // [0, 1, 2, 3, 4]

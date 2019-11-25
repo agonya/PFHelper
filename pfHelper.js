@@ -6,7 +6,7 @@ class PFHelper {
         this.importHelper = function (module) {
             let list = Object.getOwnPropertyNames(module);
             let logObj = {};
-            for (let i = 2; i < list.length; i++) {
+            for (let i = 2; i < list.length - 1; i++) {
                 logObj[`property${i-2}`] = list[i];
             }
             for (let p in logObj) {
@@ -45,7 +45,7 @@ class PFHelper {
         }
 
         if (config.animations)
-        this.importHelper(require('./Graphics/animationsHelper').default);
+            this.importHelper(require('./Graphics/animationsHelper').default);
 
 
         if (config.utility)

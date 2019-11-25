@@ -1,7 +1,7 @@
 class UtilityHelper {
 
     /**
-     * @name Remove
+     * @name RemoveFromArray
      * 
      * @description Removes item from array. <br>
      * Returns true if item is removed.
@@ -22,7 +22,7 @@ class UtilityHelper {
         }
     }
 
-    
+
 }
 
 export default UtilityHelper;

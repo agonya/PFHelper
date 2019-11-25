@@ -1,4 +1,4 @@
-class UtilityHelper {
+class AnimationsHelper {
     static createBurstFlowAnimation(from, to, amount = 10, atlas = false, key = "coin", duration = 1) {
         let PFHelper = this;
 
@@ -83,4 +83,4 @@ class UtilityHelper {
     }
 }
 
-export default UtilityHelper;
+export default AnimationsHelper;

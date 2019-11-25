@@ -34,6 +34,9 @@ The main reason this was created is to enable users to choose colors from a pred
 
 There is two different json file contains different colors.
 
+!!! info "Colors source"
+    See [colors.json](https://raw.githubusercontent.com/TayfunTurgut/PFHelper/master/Graphics/colors.json?token=AFO4CQU37K4S2M6AR26PSZK54THBQ) to check out all the colors in our repository!
+
 
 ### Colors With Subs
 

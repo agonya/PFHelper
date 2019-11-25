@@ -163,6 +163,32 @@ class MathsHelper {
 
         return tempArray;
     }
+
+    /**
+     * @description Rotate a 2D array of x-y couples wrt a point array containing an x-y couple and an angle.
+     *
+     * @static
+     * @param {Array} array The 2D array to rotate
+     * @param {Array} point Rotation pivot array containing x-y values
+     * @param {number} angle The angle to rotate the values
+     * 
+     * @returns {Array}
+     * 
+     * @memberof MathsHelper
+     */
+    static rotateArray(array, point, angle) {
+        let final = [];
+        for (let i = 0; i < array.length; i++) {
+            final[i] = [];
+            let x1 = array[i][0] - point[0];
+            let y1 = array[i][0] - point[1];
+            let x2 = Math.cos(angle) * (x1) - Math.sin(angle) * y1;
+            let y2 = Math.sin(angle) * (x1) + Math.cos(angle) * y1;
+            final[i][0] = x2 + point[0];
+            final[i][1] = y2 + point[1];
+        }
+        return final;
+    }
 }
 
 export default MathsHelper;
