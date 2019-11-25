@@ -2,9 +2,9 @@
 
 ## Playable Factory In-House Helper Library (PFHelper)
 
-PFHelper is a library that was created for one simple purpose: to make the resident HTML5 developer's life a little bit easier. It is fully open sourced, and any member of the firm can edit and contribute the classes.
+PFHelper is a library that was created for one simple purpose: to make the resident HTML5 developer's life a little bit easier. It is fully open sourced, and any member of the firm can edit and contribute to the classes.
 
-* Authors: Tayfun Turgut, Tunahan Görmüş, Kadir Mert Okumuş
+* Authors: Tayfun Turgut, Tunahan Görmüş, Kadir Mert Okumuş, Berkecan Gürer
 
 ## Usage
 

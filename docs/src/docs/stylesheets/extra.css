@@ -1,0 +1,10 @@
+.colorbox-small {
+	width: 25%;
+	height: 72px;
+	line-height: 64px;
+	text-align: center;
+	float: left;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	padding: 3px;
+}
