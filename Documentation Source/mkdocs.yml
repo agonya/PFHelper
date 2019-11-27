@@ -6,6 +6,7 @@ nav:
     - MathsHelper: mathsHelper.md
     - ObjectRegister: objectRegister.md
     - AnimationsHelper: animationHelper.md
+    - ObjectPositioner: objectPositioner.md
     - ResizeManager: resizeManager.md
 theme:
   name: 'material'
