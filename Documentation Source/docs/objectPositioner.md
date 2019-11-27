@@ -19,7 +19,7 @@ Object Positioner is a helper that uses grids to position an object to a specifi
     
 * `index` The index value that object will be positioned in (number)
 * `obj` The object that will be positioned, this object can be image, text and container. If you want to use graphics object you can add it to the container. (object)
-* `scale: 1` This represents grid number that object will be scaled to. For example if the scale value is 1 so, the object will be scaled to '1 row heigt' or '1 column width'. It will choose smaller one. (number)
+* `scale: 1` This represents grid number that object will be scaled to. For example if the scale value is 1 so, the object will be scaled to '1 row height' or '1 column width'. It will choose the smaller one. (number)
 * `w` Screen width (number)
 * `h` Screen height. (number)
 
@@ -30,7 +30,7 @@ Object Positioner is a helper that uses grids to position an object to a specifi
 
 ### In startGame() function
 
-:::javascript
+    :::javascript
     let config = {
 		scene: this,
         cols: 11, // must be between 5 and 20.
@@ -43,12 +43,15 @@ Object Positioner is a helper that uses grids to position an object to a specifi
 
 ### In resizeAll() function
 
-:::javascript
+    :::javascript
     objectPositioner.resize();
-    if (w > h) {
-		objectPositioner.placeAtIndex(17, button, 1, w, h)
+    if (w > h) {    
+        objectPositioner.placeAtIndex(17, button, 1, w, h)
     } else {
         objectPositioner.placeAtIndex(22, button, 3, w, h)
     }
 
-![Sample grid]('../images/object-positioner-example.png')
+This button is placed according to the shorter length of the grid rectangle (row height). Note: This is a landscape image.
+
+
+![Image Grid](images/object-positioner-example.png)
